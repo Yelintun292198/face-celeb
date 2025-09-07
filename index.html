@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Face & Emotion Detection</title>
+    <style>
+        :root {
+            --w: 640px;
+            --h: 480px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2 {
+            margin-top: 18px;
+        }
+
+        #stage {
+            position: relative;
+            width: var(--w);
+            height: var(--h);
+        }
+
+        #cam {
+            width: var(--w);
+            height: var(--h);
+            border: 2px solid #333;
+            border-radius: 4px;
+            display: block;
+        }
+
+        #overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        #status {
+            font-weight: bold;
+            color: blue;
+        }
+
+        .small {
+            color: #555;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Webcam Emotion Detection</h2>
+
+    <div id="stage">
+        <video id="cam" autoplay muted playsinline></video>
+        <canvas id="overlay"></canvas>
+    </div>
+
+    <div id="status">Loading models... Please wait</div>
+    <div class="small">Tip: run via Live Server on <code>http://127.0.0.1:5500</code></div>
+
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/dist/face-api.min.js"></script>
+    <script defer src="script.js"></script>
+
+
+
+</body>
+
+</html>
