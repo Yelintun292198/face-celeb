@@ -50,7 +50,6 @@ const CELEBS = [
     { name: "Keanu Reeves", url: wm("Keanu_Reeves_2019.jpg") },
     { name: "Dwayne Johnson", url: wm("Dwayne_Johnson_2014.jpg") },
     { name: "Emma Watson", url: wm("Emma_Watson_2013.jpg") },
-    { name: "Rihanna", url: wm("Rihanna_2018.jpg") },
     { name: "Chris Hemsworth", url: wm("Chris_Hemsworth_by_Gage_Skidmore_2.jpg") },
     { name: "Zendaya", url: wm("Zendaya_2018.png") },
     { name: "Robert Downey Jr.", url: wm("Robert_Downey_Jr_2014_Comic_Con (cropped).jpg") },
