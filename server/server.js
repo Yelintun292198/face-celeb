@@ -53,8 +53,7 @@ const CELEBS = [
     { name: "Chris Hemsworth", url: wm("Chris_Hemsworth_by_Gage_Skidmore_2.jpg") },
     { name: "Zendaya", url: wm("Zendaya_2018.png") },
     { name: "Robert Downey Jr.", url: wm("Robert_Downey_Jr_2014_Comic_Con (cropped).jpg") },
-    { name: "Gal Gadot", url: wm("Gal_Gadot_by_Gage_Skidmore_2.jpg") },
-    { name: "Will Smith", url: wm("Will_Smith_2019_by_Glenn_Francis.jpg") },
+    { name: "Gal Gadot", url: wm("Gal_Gadot_by_Gage_Skidmore_2.jpg") } },
 ];
 
 // Cache ref images on the ephemeral disk and precompute descriptors
