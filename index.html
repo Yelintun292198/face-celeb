@@ -2,75 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Face & Emotion Detection</title>
-    <style>
-        :root {
-            --w: 640px;
-            --h: 480px;
-        }
+  <meta charset="UTF-8" />
+  <title>Fun Celebrity Look-Alike 🤳🎭</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --w: min(92vw, 840px);
+      --h: calc(var(--w)*0.6);
+      --card-br: #1f2937;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
+    * {
+      box-sizing: border-box
+    }
 
-        h2 {
-            margin-top: 18px;
-        }
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: #0b0f14;
+      color: #e5e7eb;
+      display: grid;
+      place-items: center;
+      min-height: 100dvh;
+    }
 
-        #stage {
-            position: relative;
-            width: var(--w);
-            height: var(--h);
-        }
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px
+    }
 
-        #cam {
-            width: var(--w);
-            height: var(--h);
-            border: 2px solid #333;
-            border-radius: 4px;
-            display: block;
-        }
+    .btn,
+    label {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer
+    }
 
-        #overlay {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
+    .stage {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--card-br)
+    }
 
-        #status {
-            font-weight: bold;
-            color: blue;
-        }
+    #cam {
+      width: 100%;
+      height: 100%;
+      display: block
+    }
 
-        .small {
-            color: #555;
-            font-size: 12px;
-        }
-    </style>
+    #overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none
+    }
+
+    #celebs {
+      width: var(--w);
+      margin-top: 14px;
+      background: #0f172a;
+      border: 1px solid var(--card-br);
+      border-radius: 16px;
+      padding: 16px
+    }
+
+    .mirrored {
+      transform: scaleX(-1)
+    }
+
+    a {
+      color: #93c5fd
+    }
+
+    pre.err {
+      white-space: pre-wrap;
+      background: #111827;
+      padding: 12px;
+      border-radius: 8px;
+      max-height: 220px;
+      overflow: auto
+    }
+  </style>
+
+  <!-- face-api -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/dist/face-api.min.js"></script>
+  <script defer src="./script.js"></script>
 </head>
 
 <body>
-    <h2>Webcam Emotion Detection</h2>
+  <div class="controls">
+    <label><input id="mirrorToggle" type="checkbox" /> 🔁 Mirror video</label>
+    <button id="btnCeleb" class="btn">Check Celebrity (Webcam)</button>
+    <label>Upload Image <input id="filePick" type="file" accept="image/*" hidden /></label>
+  </div>
 
-    <div id="stage">
-        <video id="cam" autoplay muted playsinline></video>
-        <canvas id="overlay"></canvas>
-    </div>
+  <section class="stage">
+    <video id="cam" autoplay muted playsinline></video>
+    <canvas id="overlay"></canvas>
+  </section>
 
-    <div id="status">Loading models... Please wait</div>
-    <div class="small">Tip: run via Live Server on <code>http://127.0.0.1:5500</code></div>
+  <div id="status" style="margin-top:10px">Loading models…</div>
+  <section id="celebs"></section>
 
-
-    <script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/dist/face-api.min.js"></script>
-    <script defer src="script.js"></script>
-
-
-
+  <audio id="shutter" src="./shutter.mp3" preload="auto"></audio>
 </body>
 
 </html>
