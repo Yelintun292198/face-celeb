@@ -14,7 +14,8 @@ const thVal = document.getElementById('thVal');
 let stream = null;
 
 // If you ever open the page via Live Server (5500), hard-point the API to 5177:
-const API_BASE = "http://localhost:5177"; // keep this to avoid 405 on 5500
+const API_BASE = window.location.origin;
+
 
 thresholdRange.addEventListener('input', () => thVal.textContent = thresholdRange.value);
 
@@ -64,7 +65,11 @@ function mirroredJPEGFromVideo(el) {
 
 async function postImage(formData, opts) {
     const query = new URLSearchParams(opts).toString();
-    const res = await fetch(`${API_BASE}/api/detect-celebs?${query}`, { method: 'POST', body: formData });
+    const res = await fetch(`${API_BASE}/api/detect-celebs?${query}`, {
+        method: "POST",
+        body: formData,
+    });
+
     const body = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(body.detail || `Server error: ${res.status}`);
     return body;
