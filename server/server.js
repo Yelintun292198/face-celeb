@@ -97,7 +97,7 @@ app.post("/api/detect-celebs", upload.single("image"), async (req, res) => {
 });
 
 // SPA fallback → always serve index.html
-app.get("/*", (req, res) => {
+app.get(/.*/, (req, res) => {
     res.sendFile(path.join(publicPath, "index.html"));
 });
 
