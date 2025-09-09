@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>だれに似てる？（有名人そっくり判定）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://en.wikipedia.org" crossorigin>
+  <link rel="preconnect" href="https://www.wikidata.org" crossorigin>
+  <link rel="preconnect" href="https://commons.wikimedia.org" crossorigin>
+
+
+</head>
+
+<body>
+  <header>
+    <h1>だれに似てる？（有名人そっくり判定）</h1>
+    <div class="sub">AWS Rekognition / 日本語UI</div>
+  </header>
+
+  <main class="container">
+    <!-- 左：入力 -->
+    <section class="card">
+      <h2>① 顔画像を用意</h2>
+
+      <div class="media">
+        <video id="video" class="mirror" autoplay playsinline muted></video>
+      </div>
+
+      <div class="toolbar">
+        <button id="toggleCam" class="btn">📷 カメラ開始</button>
+        <button id="snap" class="btn primary">撮影して判定</button>
+        <div class="spacer"></div>
+        <span class="tip">明るい場所・正面で撮ると精度UP／プレビューは鏡表示</span>
+      </div>
+
+      <hr style="border-color: rgba(255,255,255,.08); border-style: solid; border-width: 1px 0 0; margin: 14px 0;" />
+
+      <div class="row">
+        <label>画像を選ぶ（JPG/PNG）:</label>
+        <input type="file" id="fileInput" accept="image/*" />
+        <button id="sendFile" class="btn">アップロードして判定</button>
+      </div>
+      <img id="preview" class="preview" alt="プレビュー" style="display:none; margin-top:8px; border-radius:12px;" />
+
+      <hr style="border-color: rgba(255,255,255,.08); border-style: solid; border-width: 1px 0 0; margin: 14px 0;" />
+
+      <div class="row">
+        <label for="gender">性別フィルタ:</label>
+        <select id="gender" class="btn">
+          <option value="any">指定なし（おすすめ）</option>
+          <option value="male">男性に似てる人だけ</option>
+          <option value="female">女性に似てる人だけ</option>
+        </select>
+
+        <label for="threshold">しきい値: <span id="thVal">50</span>%</label>
+        <input id="threshold" type="range" min="10" max="90" value="50" style="width:180px" />
+      </div>
+    </section>
+
+    <!-- 右：結果 -->
+    <section class="card">
+      <h2>② 結果</h2>
+      <div id="status" class="muted">待機中…</div>
+      <div id="results" class="results"></div>
+      <p class="muted">※ 楽しむ用途です。必ずしも正確ではありません。</p>
+    </section>
+  </main>
+
+  <footer>プライバシーに配慮して使ってね。画像は友だちに勝手に共有しないこと！</footer>
+
+  <script defer src="script.js?v=5"></script>
+
+</body>
+
+</html>
