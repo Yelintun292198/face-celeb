@@ -1,0 +1,30 @@
+{
+  "name": "work11",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yelintun292198/face-celeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yelintun292198/face-celeb/issues"
+  },
+  "homepage": "https://github.com/Yelintun292198/face-celeb#readme",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-rekognition": "^3.883.0",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "multer": "^2.0.2"
+  }
+}
