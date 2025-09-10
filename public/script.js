@@ -14,7 +14,18 @@ const thVal = document.getElementById('thVal');
 let stream = null;
 
 // If you ever open the page via Live Server (5500), hard-point the API to 5177:
-const API_BASE = window.location.origin;
+// Route API correctly depending on where the page is opened
+let API_BASE = window.location.origin;
+
+// If running via VS Code Live Server (port 5500), call the Node backend on 5177
+if (location.port === '5500') {
+    API_BASE = 'http://localhost:5177';
+}
+
+// If served from GitHub Pages, call your deployed backend (Render)
+if (/github\.io$/i.test(location.hostname)) {
+    API_BASE = 'https://face-celeb.onrender.com';
+}
 
 
 thresholdRange.addEventListener('input', () => thVal.textContent = thresholdRange.value);
